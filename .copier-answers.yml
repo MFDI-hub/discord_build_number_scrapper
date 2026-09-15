@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier. Do not edit manually.
+_commit: 03c1a82
+_src_path: https://github.com/MFDI-hub/python-template
+copyright_year: '2026'
+package_author_email: mfdisanchez@gmail.com
+package_author_name: mfdi
+package_description: title
+package_github_org: MFDI-hub
+package_module: discord_build_number_scrapper
+package_name: discord_build_number_scrapper

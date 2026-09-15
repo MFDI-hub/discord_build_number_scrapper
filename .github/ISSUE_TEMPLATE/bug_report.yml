@@ -1,0 +1,42 @@
+name: Bug report
+description: Report something that is broken or incorrect
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to reproduce the behavior.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Package version, git commit, or tag.
+      placeholder: e.g. v0.1.0
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, and any relevant context.
+      placeholder: |
+        - OS: ...
+        - Python: ...
+        - uv: ...

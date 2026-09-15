@@ -1,0 +1,18 @@
+{
+  // (Optional) Let VSCode auto‑detect the venv – you can omit this entirely.
+  // If you keep it, use a forward‑slash path that works on all OSes:
+  // "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  // Let the Python extension activate the venv in every new terminal
+  "python.terminal.activateEnvironment": true,
+  // No custom terminal profile needed – use the system's default shell
+  // (remove "terminal.integrated.defaultProfile.windows" and "profiles.windows")
+  // Formatting settings (unchanged)
+  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "always",
+      "source.organizeImports.ruff": "always"
+    }
+  }
+}

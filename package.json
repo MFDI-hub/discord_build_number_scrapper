@@ -1,0 +1,9 @@
+{
+  "name": "discord_build_number_scrapper",
+  "version": "0.0.0-semantically-released",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MFDI-hub/discord_build_number_scrapper.git"
+  }
+}

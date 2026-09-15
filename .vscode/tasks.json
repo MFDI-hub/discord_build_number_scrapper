@@ -1,0 +1,78 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "install",
+      "type": "shell",
+      "command": "uv sync --all-extras",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "uv run python devtools/lint.py",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "uv run pytest -n auto --cov --cov-report=term-missing",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "docs",
+      "type": "shell",
+      "command": "uv run mkdocs serve",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "docs-build",
+      "type": "shell",
+      "command": "uv run mkdocs build --strict",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "uv build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "pre-commit",
+      "type": "shell",
+      "command": "uv run pre-commit run --all-files",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "upgrade",
+      "type": "shell",
+      "command": "uv sync --upgrade --all-extras --dev",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "sync-chosen-files",
+      "type": "shell",
+      "command": "uv run sync-chosen-files --once",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

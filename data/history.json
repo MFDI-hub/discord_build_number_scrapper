@@ -1,0 +1,37 @@
+[
+  {
+    "channel": "stable",
+    "build_number": 612377,
+    "build_hash": "8b3cee648b2457bdba2be1095faa28a0743c8c00",
+    "build_date": "2026-09-14T07:22:28+00:00",
+    "first_seen": "2026-09-15T14:07:36.567272+00:00"
+  },
+  {
+    "channel": "ptb",
+    "build_number": 613334,
+    "build_hash": "fd72049652b026bf89686ce2515b1f1669cf7f68",
+    "build_date": "2026-09-15T07:22:14+00:00",
+    "first_seen": "2026-09-15T14:07:36.567272+00:00"
+  },
+  {
+    "channel": "canary",
+    "build_number": 613386,
+    "build_hash": "5abdd6ab4d565f622c03a533532c11094a6a11ba",
+    "build_date": "2026-09-15T13:34:09+00:00",
+    "first_seen": "2026-09-15T14:07:36.567272+00:00"
+  },
+  {
+    "channel": "stable",
+    "build_number": 613334,
+    "build_hash": "fd72049652b026bf89686ce2515b1f1669cf7f68",
+    "build_date": "2026-09-15T07:22:14+00:00",
+    "first_seen": "2026-09-15T17:04:00.715490+00:00"
+  },
+  {
+    "channel": "canary",
+    "build_number": 613515,
+    "build_hash": "c2879f719a59d77013b84bf666a14f7e1a9f926b",
+    "build_date": "2026-09-15T16:56:00+00:00",
+    "first_seen": "2026-09-15T17:04:00.715490+00:00"
+  }
+]

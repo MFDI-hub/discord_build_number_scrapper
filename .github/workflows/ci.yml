@@ -1,0 +1,108 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: CI
+
+on:
+  push:
+    # Use ["main", "master"] for CI only on the default branch.
+    # Use ["**"] for CI on all branches.
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        # Update this as needed:
+        # Common platforms: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        os: ["ubuntu-latest"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+
+    # Linux only by default. Use ${{ matrix.os }} for other OSes.
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      # Generally following uv docs:
+      # https://docs.astral.sh/uv/guides/integration/github/
+
+      - name: Checkout (official GitHub action)
+        uses: actions/checkout@v7
+        with:
+          # Important for versioning plugins:
+          fetch-depth: 0
+
+      - name: Install uv (official Astral action)
+        uses: astral-sh/setup-uv@v10.0.1
+        with:
+          # Update this as needed:
+          version: "0.10.2"
+          enable-cache: true
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up Python (using uv)
+        run: uv python install
+
+      # Alternately can use the official Python action:
+      # - name: Set up Python (using actions/setup-python)
+      #   uses: actions/setup-python@v6
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
+
+      - name: Install all dependencies
+        run: uv sync --all-extras
+
+      - name: Run linting
+        run: uv run python devtools/lint.py
+
+      - name: Run tests with coverage
+        run: >
+          uv run pytest -n auto
+          --cov
+          --cov-report=term-missing
+          --cov-report=xml
+
+      - name: Verify Docs Build
+        run: uv run mkdocs build --strict
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Run Trivy vulnerability scanner
+        # Pin to commit SHA (v0.36.0) — prefer SHA over mutable tags for Actions.
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: CRITICAL,HIGH
+          exit-code: "1"
+          ignore-unfixed: true
+
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10.0.1
+        with:
+          version: "0.10.2"
+          enable-cache: true
+          python-version: "3.13"
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Export dependencies
+        run: uv export --no-dev --format requirements.txt > /tmp/requirements.txt
+
+      - name: Run pip-audit
+        run: uvx pip-audit -r /tmp/requirements.txt

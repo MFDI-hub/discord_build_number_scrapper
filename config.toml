@@ -1,0 +1,29 @@
+# Discord build scraper settings.
+# Priority: CLI flags > environment variables > this file > defaults.
+
+# curl_cffi browser profile. Aliases: chrome, edge, safari, firefox, chrome_android.
+# Concrete examples: chrome150, chrome131, firefox147, safari260, edge101.
+impersonate = "chrome"
+
+# Optional proxy URL, e.g. "socks5://user:pass@host:port" or "http://host:port".
+# Leave unset to connect directly. SCRAPER_PROXY overrides this.
+# proxy = ""
+
+timeout = 30
+verify = true
+channels = ["stable", "ptb", "canary"]
+data_dir = "data"
+max_files = 200
+download_concurrency = 8
+asset_base_url = "https://discord.com"
+
+# Extra HTTP headers merged on top of the impersonated browser headers.
+# [headers]
+# Accept-Language = "en-US,en;q=0.9"
+
+# Override or add channel hosts.
+# [domains]
+# stable = "discord.com"
+# ptb = "ptb.discord.com"
+# canary = "canary.discord.com"
+# staging = "staging.discord.com"

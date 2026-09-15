@@ -1,0 +1,25 @@
+site_name: "discord_build_number_scrapper"
+site_description: "title"
+
+repo_url: https://github.com/MFDI-hub/discord_build_number_scrapper
+repo_name: MFDI-hub/discord_build_number_scrapper
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path: ["."]
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Development: development.md
+  - Publishing: publishing.md
