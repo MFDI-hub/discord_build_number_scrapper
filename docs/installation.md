@@ -4,7 +4,7 @@ Requires **Python 3.10 or later**.
 
 ## Users
 
-Install from [PyPI](https://pypi.org/project/discord_build_number_scrapper/). pip and uv resolve the same package; download stats on PyPI include both.
+Install from [PyPI](https://pypi.org/project/discord-build-number-scrapper/). pip and uv resolve the same package (`discord-build-number-scrapper` is the name on PyPI; underscores also work).
 
 ### Install the package
 

@@ -1,6 +1,6 @@
 # Publishing releases
 
-This is how this package is published to [PyPI](https://pypi.org/project/discord_build_number_scrapper/)
+This is how this package is published to [PyPI](https://pypi.org/project/discord-build-number-scrapper/)
 from GitHub Actions.
 
 Thanks to
@@ -57,7 +57,7 @@ These steps assume the GitHub repo already exists. The package name on PyPI is
    - Watch for the publish workflow in the GitHub Actions tab.
 
    - If it succeeds, the package appears at
-     [https://pypi.org/project/discord_build_number_scrapper/](https://pypi.org/project/discord_build_number_scrapper/).
+     [https://pypi.org/project/discord-build-number-scrapper/](https://pypi.org/project/discord-build-number-scrapper/).
 
 ### Publishing subsequent releases
 
@@ -135,7 +135,7 @@ Follow this checklist for each new release.
    ```
 
    Then confirm on PyPI (may take a minute):
-   [https://pypi.org/project/discord_build_number_scrapper/](https://pypi.org/project/discord_build_number_scrapper/)
+   [https://pypi.org/project/discord-build-number-scrapper/](https://pypi.org/project/discord-build-number-scrapper/)
 
 ### Release notes format
 

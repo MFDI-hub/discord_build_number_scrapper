@@ -3,13 +3,15 @@
 Scrape Discord web client build numbers for stable, PTB, and canary.
 
 [![CI](https://github.com/MFDI-hub/discord_build_number_scrapper/actions/workflows/ci.yml/badge.svg)](https://github.com/MFDI-hub/discord_build_number_scrapper/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/discord_build_number_scrapper.svg)](https://pypi.org/project/discord_build_number_scrapper/)
-[![Python versions](https://img.shields.io/pypi/pyversions/discord_build_number_scrapper.svg)](https://pypi.org/project/discord_build_number_scrapper/)
-[![Downloads](https://img.shields.io/pypi/dm/discord_build_number_scrapper.svg)](https://pypistats.org/packages/discord-build-number-scrapper)
-[![License](https://img.shields.io/pypi/l/discord_build_number_scrapper.svg)](https://github.com/MFDI-hub/discord_build_number_scrapper/blob/main/LICENSE)
+[![Docs](https://github.com/MFDI-hub/discord_build_number_scrapper/actions/workflows/docs.yml/badge.svg)](https://mfdi-hub.github.io/discord_build_number_scrapper/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-docs-222?logo=githubpages&logoColor=white)](https://mfdi-hub.github.io/discord_build_number_scrapper/)
+[![PyPI](https://img.shields.io/pypi/v/discord-build-number-scrapper.svg?logo=pypi&logoColor=white)](https://pypi.org/project/discord-build-number-scrapper/)
+[![Python versions](https://img.shields.io/pypi/pyversions/discord-build-number-scrapper.svg)](https://pypi.org/project/discord-build-number-scrapper/)
+[![Downloads](https://img.shields.io/badge/downloads-PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/discord-build-number-scrapper/)
+[![License](https://img.shields.io/pypi/l/discord-build-number-scrapper.svg)](https://github.com/MFDI-hub/discord_build_number_scrapper/blob/main/LICENSE)
 
-[Documentation](https://mfdi-hub.github.io/discord_build_number_scrapper/) ·
-[PyPI](https://pypi.org/project/discord_build_number_scrapper/) ·
+[GitHub Pages](https://mfdi-hub.github.io/discord_build_number_scrapper/) ·
+[PyPI](https://pypi.org/project/discord-build-number-scrapper/) ·
 [latest.json](https://raw.githubusercontent.com/MFDI-hub/discord_build_number_scrapper/main/data/latest.json)
 
 A CLI and Python library that fetches Discord's `/app` pages (and JS assets when needed) to extract `build_number` and `build_hash`. This repo also publishes hourly scrape results in [`data/latest.json`](data/latest.json), so you can consume the numbers without hitting Discord yourself.
@@ -119,10 +121,14 @@ See [configuration](https://mfdi-hub.github.io/discord_build_number_scrapper/con
 
 ## Documentation
 
+Hosted on [GitHub Pages](https://mfdi-hub.github.io/discord_build_number_scrapper/):
+
+- [Home](https://mfdi-hub.github.io/discord_build_number_scrapper/)
 - [Installation](https://mfdi-hub.github.io/discord_build_number_scrapper/installation/)
 - [Usage](https://mfdi-hub.github.io/discord_build_number_scrapper/usage/)
 - [Configuration](https://mfdi-hub.github.io/discord_build_number_scrapper/configuration/)
 - [Development](https://mfdi-hub.github.io/discord_build_number_scrapper/development/)
+- [Publishing](https://mfdi-hub.github.io/discord_build_number_scrapper/publishing/)
 
 ## Contributing
 
