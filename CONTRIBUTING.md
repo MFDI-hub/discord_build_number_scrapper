@@ -2,6 +2,10 @@
 
 Thanks for your interest in contributing to **discord_build_number_scrapper**!
 
+End users can install the package with pip or uv; see the [README](README.md)
+and [installation docs](docs/installation.md). Contributors should use uv as
+shown below.
+
 ## Getting started
 
 1. Fork and clone the repository.

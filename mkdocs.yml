@@ -1,5 +1,6 @@
 site_name: "discord_build_number_scrapper"
-site_description: "title"
+site_description: "Scrape Discord web client build numbers"
+site_url: https://mfdi-hub.github.io/discord_build_number_scrapper/
 
 repo_url: https://github.com/MFDI-hub/discord_build_number_scrapper
 repo_name: MFDI-hub/discord_build_number_scrapper
@@ -15,11 +16,20 @@ plugins:
       fallback_to_build_date: true
 
 markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
   - pymdownx.snippets:
       base_path: ["."]
 
 nav:
   - Home: index.md
   - Installation: installation.md
+  - Usage: usage.md
+  - Configuration: configuration.md
   - Development: development.md
   - Publishing: publishing.md

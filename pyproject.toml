@@ -2,8 +2,8 @@
 
 [project.urls]
 Repository = "https://github.com/MFDI-hub/discord_build_number_scrapper"
-# Homepage = "https://..."
-# Documentation = "https://..."
+Homepage = "https://github.com/MFDI-hub/discord_build_number_scrapper"
+Documentation = "https://mfdi-hub.github.io/discord_build_number_scrapper/"
 
 [project]
 name = "discord_build_number_scrapper"

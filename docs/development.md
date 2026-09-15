@@ -1,20 +1,19 @@
 # Development
 
-## Setting Up uv
+## Setting up uv
 
-This project is set up to use [uv](https://docs.astral.sh/uv/) to manage Python and
-dependencies. First, be sure you
-[have uv installed](https://docs.astral.sh/uv/getting-started/installation/).
+This project uses [uv](https://docs.astral.sh/uv/) to manage Python and
+dependencies. First, [install uv](installation.md#install-uv).
 
 Then
 [fork the MFDI-hub/discord_build_number_scrapper repo](https://github.com/MFDI-hub/discord_build_number_scrapper/fork)
-(having your own fork will make it easier to contribute) and
+and
 [clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-## Basic Developer Workflows
+## Basic developer workflows
 
-The `Makefile` simply offers shortcuts to `uv` commands for developer convenience.
-(For clarity, GitHub Actions don’t use the Makefile and just call `uv` directly.)
+The `Makefile` offers shortcuts to `uv` commands. GitHub Actions call `uv`
+directly, not the Makefile.
 
 ```shell
 # First, install all dependencies, set up the venv, and install git hooks.
@@ -39,41 +38,39 @@ make pre-commit
 # Preview documentation locally (MkDocs + Material):
 make docs
 
-# Delete all the build artifacts:
+# Strict docs build (same as CI):
+make docs-build
+
+# Delete build artifacts:
 make clean
 
 # Upgrade dependencies to compatible versions:
 make upgrade
 
-# To run tests by hand:
-uv run pytest   # all tests
+# Tests by hand:
+uv run pytest
 uv run pytest -n auto --cov --cov-report=term-missing
-uv run pytest -s src/module/some_file.py  # one test, showing outputs
+uv run pytest -s tests/test_scraper.py
 
-# Build and install current dev executables, to let you use your dev copies
-# as local tools:
+# Install the current checkout as a local CLI:
 uv tool install --editable .
 
-# Dependency management directly with uv:
-# Add a new dependency:
+# Dependency management:
 uv add package_name
-# Add a development dependency:
 uv add --dev package_name
-# Optional observability extras (structlog + tqdm):
-uv sync --extra observability
-# Update to latest compatible versions (including dependencies on git repos):
 uv sync --upgrade
-# Update a specific package:
 uv lock --upgrade-package package_name
-# Update dependencies on a package:
 uv add package_name@latest
 
-# Run a shell within the Python environment:
+# Activate the project venv:
 uv venv
 source .venv/bin/activate
-# On Windows PowerShell:
+# Windows PowerShell:
 # .venv\Scripts\Activate.ps1
 ```
+
+`pyproject.toml` defines an unused optional extra `observability` (`structlog`,
+`tqdm`). Application code does not import it; prefer not adding it for new work.
 
 See [uv docs](https://docs.astral.sh/uv/) for details.
 
@@ -156,32 +153,14 @@ uvx httpie GET https://httpbin.org/get
 uv tool install httpie
 ```
 
-## Logging and progress (optional extras)
-
-```shell
-uv sync --extra observability
-```
-
-Then in application code:
-
-```python
-import structlog
-from tqdm import tqdm
-
-log = structlog.get_logger()
-log.info("starting", items=10)
-
-for item in tqdm(range(10)):
-    ...
-```
-
 ## Documentation hosting
 
 Local and CI use MkDocs. For hosted docs you can:
 
 - **GitHub Pages** — `.github/workflows/docs.yml` builds and deploys on push to
   `main`/`master`. Enable Pages in repo settings: **Settings → Pages → Build and
-  deployment → GitHub Actions**.
+  deployment → GitHub Actions**. Site URL:
+  [https://mfdi-hub.github.io/discord_build_number_scrapper/](https://mfdi-hub.github.io/discord_build_number_scrapper/)
 - **Read the Docs** — import the repo on [Read the Docs](https://readthedocs.org/);
   `.readthedocs.yaml` is already included.
 
@@ -194,10 +173,9 @@ Optional GitHub features (not code):
 - [Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects)
   (boards) for kanban-style tracking
 
-## Publishing Releases
+## Publishing releases
 
-See [publishing.md](publishing.md) for instructions on publishing to PyPI (manual
-releases and semantic-release).
+See [publishing.md](publishing.md) for GitHub Releases and PyPI.
 
 ## Documentation
 
@@ -209,8 +187,3 @@ releases and semantic-release).
 - [Commitizen](https://commitizen-tools.github.io/commitizen/)
 - [semantic-release](https://semantic-release.gitbook.io/)
 - [Trivy](https://trivy.dev/)
-
-* * *
-
-*This file was built with
-[python-template](https://github.com/MFDI-hub/python-template).*

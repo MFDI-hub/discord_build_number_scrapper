@@ -1,13 +1,12 @@
-## Publishing Releases
+# Publishing releases
 
-This is how to publish a Python package to [**PyPI**](https://pypi.org/) from GitHub
-Actions, when using the
-[**python-template**](https://github.com/MFDI-hub/python-template) template.
+This is how this package is published to [PyPI](https://pypi.org/project/discord_build_number_scrapper/)
+from GitHub Actions.
 
 Thanks to
-[the dynamic versioning plugin](https://github.com/ninoseki/uv-dynamic-versioning/),
-the [`release.yml`](https://github.com/MFDI-hub/python-template/blob/main/template/.github/workflows/release.yml)
-workflow (semantic-release), and the [`publish.yml`](https://github.com/MFDI-hub/python-template/blob/main/template/.github/workflows/publish.yml)
+[uv-dynamic-versioning](https://github.com/ninoseki/uv-dynamic-versioning/),
+the [`release.yml`](https://github.com/MFDI-hub/discord_build_number_scrapper/blob/main/.github/workflows/release.yml)
+workflow (semantic-release), and the [`publish.yml`](https://github.com/MFDI-hub/discord_build_number_scrapper/blob/main/.github/workflows/publish.yml)
 workflow, tagged GitHub Releases publish the matching version to PyPI.
 
 You can release in either way:
@@ -17,39 +16,30 @@ You can release in either way:
    a bump. That release triggers `publish.yml`.
 2. **Manual:** create a tagged release yourself in the GitHub UI or with `gh` (below).
 
-### First-Time Setup
+Local alternative: `scripts/publish.py` can `uv build` and upload with twine using tokens
+from `.env` (`TEST_PYPI_API_TOKEN`, `PYPI_API_TOKEN`). CI trusted publishing is preferred.
 
-This part is a little confusing the first time.
-Here is the simplest way to do it.
-For the purposes of this example replace OWNER and PROJECT with the right values.
+### First-time setup
 
-**Note:** These steps assume you already have a GitHub repo with your code pushed. If
-you're setting up manually, create an **empty** GitHub repo (no
-README, no .gitignore, no license — the template already provides these) and push your
-code to it. See the
-[python-template README](https://github.com/MFDI-hub/python-template)
-for Copier usage and repo layout.
+These steps assume the GitHub repo already exists. The package name on PyPI is
+`discord_build_number_scrapper`.
 
 1. **Get a PyPI account** at [pypi.org](https://pypi.org/) and sign in.
 
-2. **Pick a name for the project** that isn’t already taken.
-
-   - Go to `https://pypi.org/project/PROJECT` to see if another project with that name
-     already exists.
-
-   - If needed, update your `pyproject.toml` with the correct name.
-
-3. **Authorize** your repository to publish to PyPI:
+2. **Authorize** this repository to publish to PyPI:
 
    - Go to [the publishing settings page](https://pypi.org/manage/account/publishing/).
 
-   - Find “Trusted Publisher Management” and register your GitHub repo as a new
-     “pending” trusted publisher.
+   - Find “Trusted Publisher Management” and register the GitHub repo as a trusted
+     publisher (or complete a pending one).
 
-   - Enter the project name, repo owner, repo name, and `publish.yml` as the workflow
-     name. (You can leave the “environment name” field blank.)
+   - Project name: `discord_build_number_scrapper`
+   - Owner: `MFDI-hub`
+   - Repository: `discord_build_number_scrapper`
+   - Workflow name: `publish.yml` (leave environment name blank unless you configured one)
 
-4. **Create a first release** so versioning starts on `0.x` (optional but recommended):
+3. **Create a first release** so versioning starts on `0.x` (optional but recommended
+   if no tags exist yet):
 
    semantic-release’s first release is `1.0.0` if no tags exist. To stay on `0.x`, create
    an initial tag once after setup:
@@ -62,17 +52,18 @@ for Copier usage and repo layout.
 
    Later bumps follow Conventional Commits automatically.
 
-5. **Confirm it publishes to PyPI**
+4. **Confirm it publishes to PyPI**
 
-   - Watch for the release workflow in the GitHub Actions tab.
+   - Watch for the publish workflow in the GitHub Actions tab.
 
-   - If it succeeds, you should see it appear at `https://pypi.org/project/PROJECT`.
+   - If it succeeds, the package appears at
+     [https://pypi.org/project/discord_build_number_scrapper/](https://pypi.org/project/discord_build_number_scrapper/).
 
-### Publishing Subsequent Releases
+### Publishing subsequent releases
 
 Follow this checklist for each new release.
 
-#### Pre-Release Checklist
+#### Pre-release checklist
 
 1. **Verify all changes are committed and pushed:**
 
@@ -99,7 +90,6 @@ Follow this checklist for each new release.
 4. **Determine the new version number** (manual releases only):
 
    ```shell
-   # Check current/latest version:
    gh release list --limit 1
    ```
 
@@ -109,7 +99,7 @@ Follow this checklist for each new release.
    - **feat:** → minor (e.g. `v0.5.9` → `v0.6.0`)
    - **BREAKING CHANGE** / `!` → major (e.g. `v0.6.0` → `v1.0.0`)
 
-#### Create the Release
+#### Create the release
 
 5. **Automatic:** merge Conventional Commits to `main` and let `release.yml` create the
    GitHub Release.
@@ -119,17 +109,17 @@ Follow this checklist for each new release.
    ```shell
    NEW_TAG="vX.Y.Z"  # Replace with actual version
    LAST_TAG=$(gh release list --limit 1 --json tagName -q '.[0].tagName')
-   
+
    gh release create "${NEW_TAG}" \
      --title "${NEW_TAG}" \
      --notes "$(cat <<'EOF'
    ## What's Changed
-   
+
    [Summarize changes here--see format guide below]
-   
+
    ### Full Changelog
-   
-   https://github.com/OWNER/PROJECT/compare/${LAST_TAG}...${NEW_TAG}
+
+   https://github.com/MFDI-hub/discord_build_number_scrapper/compare/${LAST_TAG}...${NEW_TAG}
    EOF
    )"
    ```
@@ -142,12 +132,12 @@ Follow this checklist for each new release.
    ```shell
    # Check the release workflow:
    gh run list --workflow=publish.yml --limit 1
-   
-   # Verify on PyPI (may take a minute):
-   # https://pypi.org/project/PROJECT
    ```
 
-### Release Notes Format
+   Then confirm on PyPI (may take a minute):
+   [https://pypi.org/project/discord_build_number_scrapper/](https://pypi.org/project/discord_build_number_scrapper/)
+
+### Release notes format
 
 Use this structure for release notes (manual releases):
 
@@ -174,7 +164,7 @@ Description of what changed and how to migrate.
 
 ### Full Changelog
 
-https://github.com/OWNER/PROJECT/compare/vPREVIOUS...vNEW
+https://github.com/MFDI-hub/discord_build_number_scrapper/compare/vPREVIOUS...vNEW
 ```
 
 Guidelines:
@@ -191,8 +181,3 @@ Guidelines:
 - Always include the Full Changelog compare link at the end.
 
 - For small releases, a simple bullet list is acceptable instead of full sections.
-
-* * *
-
-*This file was built with
-[python-template](https://github.com/MFDI-hub/python-template).*
