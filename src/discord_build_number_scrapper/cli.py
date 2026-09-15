@@ -9,6 +9,7 @@ from pathlib import Path
 
 from .config import load_settings
 from .history import write_data_files
+from .latest import DEFAULT_LATEST_URL, fetch_latest
 from .scraper import scrape_channels
 
 logger = logging.getLogger(__name__)
@@ -37,6 +38,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--max-files", type=int, help="Max JS files to inspect per channel")
     parser.add_argument("--concurrency", type=int, help="Parallel download limit")
     parser.add_argument("--asset-base-url", help="Base URL for /assets/ files")
+    parser.add_argument(
+        "--from-repo",
+        action="store_true",
+        help="Fetch latest.json from the GitHub repo instead of scraping Discord",
+    )
+    parser.add_argument(
+        "--latest-url",
+        default=DEFAULT_LATEST_URL,
+        help="URL of latest.json (GitHub blob URLs are converted to raw)",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     return parser.parse_args(argv)
 
@@ -67,20 +78,27 @@ def main(argv: list[str] | None = None) -> int:
         logger.error("Invalid configuration: %s", exc)
         return 1
 
-    scraped_at = datetime.now(timezone.utc)
-    logger.info(
-        "Scraping %s with impersonate=%s",
-        ",".join(settings.channels),
-        settings.impersonate,
-    )
+    if args.from_repo:
+        try:
+            latest = fetch_latest(url=args.latest_url, settings=settings)
+            snapshots = [latest[name] for name in settings.channels]
+        except Exception as exc:
+            logger.error("Fetch failed: %s", exc)
+            return 1
+    else:
+        scraped_at = datetime.now(timezone.utc)
+        logger.info(
+            "Scraping %s with impersonate=%s",
+            ",".join(settings.channels),
+            settings.impersonate,
+        )
+        try:
+            snapshots = asyncio.run(scrape_channels(settings=settings, scraped_at=scraped_at))
+        except Exception as exc:
+            logger.error("Scrape failed: %s", exc)
+            return 1
+        write_data_files(Path(settings.data_dir), snapshots, scraped_at=scraped_at)
 
-    try:
-        snapshots = asyncio.run(scrape_channels(settings=settings, scraped_at=scraped_at))
-    except Exception as exc:
-        logger.error("Scrape failed: %s", exc)
-        return 1
-
-    write_data_files(Path(settings.data_dir), snapshots, scraped_at=scraped_at)
     for snapshot in snapshots:
         logger.info(
             "%s build_number=%s build_hash=%s",
