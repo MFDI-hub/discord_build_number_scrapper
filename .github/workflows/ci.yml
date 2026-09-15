@@ -102,7 +102,9 @@ jobs:
         run: uv python install
 
       - name: Export dependencies
-        run: uv export --no-dev --format requirements.txt > /tmp/requirements.txt
+        # --no-emit-project: pip cannot hash the local editable install (-e .).
+        # --frozen: audit the locked graph without rewriting uv.lock.
+        run: uv export --frozen --no-dev --no-emit-project --format requirements.txt -o /tmp/requirements.txt
 
       - name: Run pip-audit
         run: uvx pip-audit -r /tmp/requirements.txt
