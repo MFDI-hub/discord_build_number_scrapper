@@ -306,5 +306,12 @@
     "build_hash": "bdedcdcf510bbf9e0412210dcdaf10a0979c479f",
     "build_date": "2026-09-22T03:17:03+00:00",
     "first_seen": "2026-09-22T04:32:12.310127+00:00"
+  },
+  {
+    "channel": "ptb",
+    "build_number": 618093,
+    "build_hash": "9f60edc81d272983ec03713577000e0b7b00952d",
+    "build_date": "2026-09-22T07:22:26+00:00",
+    "first_seen": "2026-09-22T09:42:52.773148+00:00"
   }
 ]
