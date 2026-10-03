@@ -803,5 +803,12 @@
     "build_hash": "74ec89425fb5f3bd6f003b5a184a64c1f9dfed58",
     "build_date": "2026-10-03T02:14:15+00:00",
     "first_seen": "2026-10-03T06:13:23.055913+00:00"
+  },
+  {
+    "channel": "canary",
+    "build_number": 628862,
+    "build_hash": "c4c91f563cb147f3dfb1f718e175fa73af7a868c",
+    "build_date": "2026-10-03T09:08:53+00:00",
+    "first_seen": "2026-10-03T12:21:53.564009+00:00"
   }
 ]
