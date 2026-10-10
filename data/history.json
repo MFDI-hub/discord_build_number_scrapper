@@ -1104,5 +1104,12 @@
     "build_hash": "b6d18f67e3a6b0e4578a688be3ed40fa8166410f",
     "build_date": "2026-10-10T00:30:42+00:00",
     "first_seen": "2026-10-10T00:36:14.646675+00:00"
+  },
+  {
+    "channel": "canary",
+    "build_number": 635309,
+    "build_hash": "1a35a347391abbd915ebedda5b3f243c1fd4bc2b",
+    "build_date": "2026-10-10T05:42:39+00:00",
+    "first_seen": "2026-10-10T06:49:40.899881+00:00"
   }
 ]
