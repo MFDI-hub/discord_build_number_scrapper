@@ -1937,5 +1937,19 @@
     "build_hash": "ecaa53812f00d83053524998f6407ac478f02b37",
     "build_date": "2026-10-28T10:46:39+00:00",
     "first_seen": "2026-10-28T11:10:09.094288+00:00"
+  },
+  {
+    "channel": "stable",
+    "build_number": 653945,
+    "build_hash": "6bd95f178a3b86458dcb860697478bb58c640d58",
+    "build_date": "2026-10-28T07:28:19+00:00",
+    "first_seen": "2026-10-28T18:07:42.170610+00:00"
+  },
+  {
+    "channel": "canary",
+    "build_number": 654358,
+    "build_hash": "a7856b143f585724ec61e81539c4debd108e0d58",
+    "build_date": "2026-10-28T17:30:45+00:00",
+    "first_seen": "2026-10-28T18:07:42.170610+00:00"
   }
 ]
