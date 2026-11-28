@@ -1,23 +1,23 @@
 {
-  "updated_at": "2026-11-27T17:57:19.763452+00:00",
+  "updated_at": "2026-11-28T01:20:13.468072+00:00",
   "channels": {
     "stable": {
       "build_number": 681709,
       "build_hash": "06af066b81c493b9780fb504eed0f40a50c2abea",
       "build_date": "2026-11-27T08:22:20+00:00",
-      "scraped_at": "2026-11-27T17:57:19.763452+00:00"
+      "scraped_at": "2026-11-28T01:20:13.468072+00:00"
     },
     "ptb": {
       "build_number": 681709,
       "build_hash": "06af066b81c493b9780fb504eed0f40a50c2abea",
       "build_date": "2026-11-27T08:22:20+00:00",
-      "scraped_at": "2026-11-27T17:57:19.763452+00:00"
+      "scraped_at": "2026-11-28T01:20:13.468072+00:00"
     },
     "canary": {
-      "build_number": 681723,
-      "build_hash": "794164027cb546359102a4090c7da1eb2aeec9d0",
-      "build_date": "2026-11-27T16:39:27+00:00",
-      "scraped_at": "2026-11-27T17:57:19.763452+00:00"
+      "build_number": 681769,
+      "build_hash": "8ad6450a88be6082ee0edba89302f98860252aba",
+      "build_date": "2026-11-28T00:42:39+00:00",
+      "scraped_at": "2026-11-28T01:20:13.468072+00:00"
     }
   }
 }
